@@ -1,0 +1,17 @@
+# Azure App Service Startup Command
+
+Use this command in:
+
+Azure Portal > App Service > Configuration > General settings > Startup Command
+
+Command:
+
+gunicorn -w 2 -k uvicorn.workers.UvicornWorker -b 0.0.0.0:8000 main:app
+
+Meaning:
+
+gunicorn = production server
+-w 2 = two workers
+-k uvicorn.workers.UvicornWorker = run FastAPI/ASGI app
+-b 0.0.0.0:8000 = bind to Azure-compatible host and port
+main:app = app object inside main.py
